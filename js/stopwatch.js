@@ -1,5 +1,7 @@
 function Stopwatch() {
   var offset, interval;
+  count = 1;
+  running = false;
   console.log("ready");
   
   this.start = function start() {
@@ -9,6 +11,10 @@ function Stopwatch() {
       }
       interval = setInterval(update, 10);
     }
+    $("#stopbtn").removeClass("disabled");
+    $("#lapbtn").removeClass("disabled");
+    $("#startbtn").addClass("disabled");
+    running = true;
   }
   
   this.stop = function stop() {
@@ -17,21 +23,20 @@ function Stopwatch() {
       interval = null;
     }
     $("#startbtn").html("Weiter");
+    $("#startbtn").removeClass("disabled");
+    $("#stopbtn").addClass("disabled");
+    running = false;
   }
 
   this.lap = function lap() {
     d = new Date(Date.now() - offset)
-    console.log(to_timestring(d));
-    var newLap = $("<tr><td>new</td><td>"+to_timestring(d)+"</td><td>del</td></tr>");
+    var newLap = $("<tr><td>"+ count +"</td><td>"+to_timestring(d)+"</td></tr>");
+    count = count +1;
     newLap.prependTo("#laps");
     var data = $("#timetable").table2CSV({delivery:'value'});
     $("#csv").attr('href','data:text/csv;charset=utf8,'+encodeURIComponent(data));
-
-$('<a></a>')
-    .attr('id','downloadFile')
-    .attr('href','data:text/csv;charset=utf8,' + encodeURIComponent(data))
-    .attr('download','filename.csv')
-    .appendTo('body');
+    $("#csv").removeClass("disabled");
+    $("html, body").animate({scrollTop: 0}, 1000);
   }
   
   function update() {
@@ -47,7 +52,12 @@ $('<a></a>')
   z = z || '0';
   n = n + '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-}
+  }
+  this.toggle = function toggle() {
+   running == true ? this.stop(): this.start();
+  }
+   
+  
  
 };
 
@@ -63,4 +73,15 @@ $("#stopbtn").on( "click", function() {
 });
 $("#lapbtn").on( "click", function() {
   sw.lap();
+});
+
+$(document).keypress(function(e){
+   switch (e.keyCode) {
+    case 32:
+      sw.lap();
+      break;
+    case 13:
+      sw.toggle();
+      break;
+   }      
 });
