@@ -9,7 +9,6 @@ body {
 .buttons {
 		margin-left:10%;
 	}
-
 @media (max-width: 480px) { 
   .time { font-size: 300%; }
 }
