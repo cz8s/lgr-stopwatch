@@ -3,6 +3,13 @@ body {
 }
 
 .time {
-		font-size: 120px;
-		text-align: center;
+		font-size: 800%;
+		margin-left:10%;
 	}
+.buttons {
+		margin-left:10%;
+	}
+
+@media (max-width: 480px) { 
+  .time { font-size: 300%; }
+}
