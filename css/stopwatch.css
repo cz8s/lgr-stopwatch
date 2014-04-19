@@ -1,4 +1,8 @@
 body {
-  padding-top: 50px;
+  padding-top: 65px;
 }
 
+.time {
+		font-size: 120px;
+		text-align: center;
+	}
