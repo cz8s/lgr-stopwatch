@@ -22,7 +22,7 @@ function Stopwatch() {
       clearInterval(interval);
       interval = null;
     }
-    $("#startbtn").html("Weiter");
+    $("#startbtn").html("Contiue");
     $("#startbtn").removeClass("disabled");
     $("#stopbtn").addClass("disabled");
     running = false;
