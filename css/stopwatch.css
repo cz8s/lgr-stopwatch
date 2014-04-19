@@ -3,6 +3,10 @@ body {
 }
 
 .time {
-		font-size: 120px;
+		font-size: 800%;
 		text-align: center;
 	}
+
+@media (max-width: 480px) { 
+  .time { font-size: 300%; }
+}

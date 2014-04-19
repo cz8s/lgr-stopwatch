@@ -26,23 +26,22 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
 
-	<div class="jumbotron">
+	<div class="jumbotron col-md-12">
 		<div class="time">
-			<span id="timer">00:00:00</span>
-			<div class="btn-group btn-group-lg">
+			<span id="timer" class="col-md-8">00:00:00</span>
+			<span class="btn-group btn-group-lg col-md-3">
 				<button type="button" class="btn btn-success" id="startbtn">Start</button>
 				<button type="button" class="btn btn-danger disabled" id="stopbtn">Stop</button>
-			</div>
-			<div class="btn-group btn-group-lg">
+			</span>
+			<span class="btn-group btn-group-lg col-md-1">
 				<button type="button" class="btn btn-warning disabled" id="lapbtn">Lap</button>
-			</div>
+			</span>
 		</div>
 	</div>
 
-	<div class="panel panel-warning">
-		<div class="panel-heading">Laps</div>
+	<div class="table-responsive col-md-4">
 		<table class="table table-hover table-condensed" id="timetable">
 			<thead>
 				<tr>
