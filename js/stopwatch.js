@@ -9,7 +9,7 @@ function Stopwatch() {
       if(!offset) {
         offset   = new Date();
       }
-      interval = setInterval(update, 10);
+      interval = setInterval(update, 100);
     }
     $("#stopbtn").removeClass("disabled");
     $("#lapbtn").removeClass("disabled");
@@ -45,7 +45,7 @@ function Stopwatch() {
   }
 
   function to_timestring(d) {
-     return pad(d.getMinutes(),2)+":"+pad(d.getSeconds(),2)+":"+pad(Math.round(d.getMilliseconds()/10),2);
+     return pad(d.getMinutes(),2)+":"+pad(d.getSeconds(),2)+":"+pad(Math.round(d.getMilliseconds()/100),1)+"0";
   }
   
   function pad(n, width, z) {
