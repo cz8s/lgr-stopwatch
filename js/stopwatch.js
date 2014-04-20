@@ -45,7 +45,7 @@ function Stopwatch() {
   }
 
   function to_timestring(d) {
-     return pad(d.getMinutes(),2)+":"+pad(d.getSeconds(),2)+":"+pad(Math.round(d.getMilliseconds()/100),1)+"0";
+     return pad(d.getMinutes(),2)+":"+pad(d.getSeconds(),2)+":"+Math.round(d.getMilliseconds()/100)+"0";
   }
   
   function pad(n, width, z) {
@@ -53,11 +53,10 @@ function Stopwatch() {
   n = n + '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
   }
+
   this.toggle = function toggle() {
    running == true ? this.stop(): this.start();
   }
-   
-  
  
 };
 
