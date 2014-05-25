@@ -45,7 +45,9 @@ function Stopwatch() {
   }
 
   function to_timestring(d) {
-     return pad(d.getMinutes(),2)+":"+pad(d.getSeconds(),2)+":"+Math.round(d.getMilliseconds()/100)+"0";
+     mil = Math.round(d.getMilliseconds()/100)+"0"
+     if (mil == 100) { mil = "00"; }
+     return pad(d.getMinutes(),2)+":"+pad(d.getSeconds(),2)+":"+mil;
   }
   
   function pad(n, width, z) {
