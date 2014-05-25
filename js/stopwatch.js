@@ -46,7 +46,7 @@ function Stopwatch() {
 
   function to_timestring(d) {
      mil = Math.round(d.getMilliseconds()/100)+"0"
-     if (mil == 100) { mil = "00"; }
+       if (mil == 100) { mil = "90"; }
      return pad(d.getMinutes(),2)+":"+pad(d.getSeconds(),2)+":"+mil;
   }
   
