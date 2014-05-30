@@ -9,7 +9,7 @@ function Stopwatch() {
       if(!offset) {
         offset   = new Date();
       }
-      interval = setInterval(update, 1000);
+      interval = setInterval(update, 200);
     }
     $("#stopbtn").removeClass("disabled");
     $("#lapbtn").removeClass("disabled");
@@ -30,7 +30,7 @@ function Stopwatch() {
 
   this.lap = function lap() {
     d = new Date(Date.now() - offset)
-    var newLap = $("<tr><td>"+ count +"</td><td>"+to_timestring(d,0)+"</td></tr>");
+    var newLap = $("<tr><td>"+ count +"</td><td>"+to_timestring(d)+"</td></tr>");
     count = count +1;
     newLap.prependTo("#laps");
     var data = $("#timetable").table2CSV({delivery:'value'});
@@ -41,21 +41,14 @@ function Stopwatch() {
   
   function update() {
     d = new Date(Date.now() - offset)
-    $("#timer").html(to_timestring(d,1)); 
+    $("#timer").html(to_timestring(d)); 
   }
 
-  function to_timestring(d,e) {
+  function to_timestring(d) {
      h = zeroFill(d.getHours()-1,2);
      m = zeroFill(d.getMinutes(),2);
      s = zeroFill(d.getSeconds(),2);
-     ms = zeroFill(d.getMilliseconds(),3);
-     ms = ms.substring(0,ms.length-1)
-       if ( e == 0) {
-         return h + ":" + m + ":" + s + ":" + ms;
-       } else {
-         return h + ":" + m + ":" + s;
-       }
-
+     return h + ":" + m + ":" + s;
   }
  
   function zeroFill( number, width )
